@@ -1,0 +1,8 @@
+﻿<section>
+    <h2 data-bind="text:displayName"></h2>
+    <blockquote data-bind="text:description"></blockquote>
+    <h3>Características da plataforma de desenvolvimento:</h3>
+    <ul data-bind="foreach: features">
+        <li data-bind="text:$data"></li>
+    </ul>
+</section>
