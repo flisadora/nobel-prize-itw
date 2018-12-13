@@ -11,6 +11,7 @@
                 { route: '', title:'Welcome', moduleId: 'viewmodels/welcome', nav: false },
                 { route: 'laureates', moduleId: 'viewmodels/laureates', nav: true },
                 { route: 'prizes', moduleId: 'viewmodels/prizes', nav: true },
+                { route: 'countries', moduleId: 'viewmodels/countries', nav: true },
                 { route: 'laureateDetails/:id', moduleId: 'viewmodels/laureateDetails', nav: false },
             ]).buildNavigationModel();
             
