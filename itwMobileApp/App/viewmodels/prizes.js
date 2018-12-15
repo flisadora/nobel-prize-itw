@@ -28,7 +28,7 @@
             console.log('CALL: PremioNobels...')
             ajaxHelper(baseUri, 'GET').done(function (data) {
                 self.prizes(data);
-                console.log(data[0]);
+                console.log("isadora" + data[0].Categoria.Nome);
             });
         };
 

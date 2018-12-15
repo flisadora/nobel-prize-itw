@@ -8,11 +8,12 @@
         },
         activate: function () {
             router.map([
-                { route: '', title:'Welcome', moduleId: 'viewmodels/welcome', nav: false },
+                { route: '', moduleId: 'viewmodels/welcome', nav: false },
                 { route: 'laureates', moduleId: 'viewmodels/laureates', nav: true },
-                { route: 'prizes', moduleId: 'viewmodels/prizes', nav: true },
                 { route: 'countries', moduleId: 'viewmodels/countries', nav: true },
-                { route: 'laureateDetails/:id', moduleId: 'viewmodels/laureateDetails', nav: false },
+                { route: 'search', moduleId: 'viewmodels/search', nav: true },
+                { route: 'prizes', moduleId: 'viewmodels/prizes', nav: false },
+                { route: 'laureadoDetalhes/:id', moduleId: 'viewmodels/laureadoDetalhes', nav: false },
             ]).buildNavigationModel();
             
             return router.activate();

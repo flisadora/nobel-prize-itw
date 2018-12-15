@@ -24,17 +24,20 @@
                 }
             })
         }
-        var cat = [];
+        //var cat = [];
         //--- Externel functions (accessible outside)
         getPrizes = function () {
             console.log('CALL: PremioNobels...')
             ajaxHelper(baseUri, 'GET').done(function (data) {
                 self.prizes(data);
-                for(var i = 0; i<data.length;i++){
-                    if not (data[i].categoria.nome in cat) {
-                        cat.push(data[i].categoria.nome);
-                    };           
-                };
+                //for(var i = 0; i<data.length;i++){
+                //    for (var j = 0; j < cat.length; j++){
+                //        if (! data[i].Categoria.Nome in cat) {
+                //            cat.push(data[i].Categoria.Nome);
+                //        };
+                //    };
+                //};
+                //console.log(cat);
             });
         };
        

@@ -1,27 +1,39 @@
-﻿    <div class="section">
-        <nav class="navbar navbar-expand-md navbar-light bg-light">          
-            <a class="navbar-brand" href="#">
-                <img class="medal" src="images/Nobel_Prize-Medal.png"/>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto" data-bind="foreach: router.navigationModel">
+﻿<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <a class="navbar-brand" href=""><img alt="Logo Icon" src="images/medal.png" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="prizes.html" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color:white">Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Chemistry</a>
+                    <a class="dropdown-item" href="#">Economics</a>
+                    <a class="dropdown-item" href="#">Literature</a>
+                    <a class="dropdown-item" href="#">Medicine</a>
+                    <a class="dropdown-item" href="#">Peace</a>
+                    <a class="dropdown-item" href="#">Physics</a>
+                </div>
+            </li>
+            <ul class="navbar-nav mr-auto">
+                <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel" style="color:white">
                     <li class="nav-item" data-bind="css: { active: isActive }">
                         <a class="nav-link" data-bind="attr: { href: hash }, text: title"></a>
                     </li>
                 </ul>
+            </ul>
+        </div>
+    </nav>
 
-                <div class="loader pull-right" data-bind="css: { active: router.isNavigating }">
-                    <i class="icon-spinner icon-2x icon-spin"></i>
-                </div>
-                <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
-    </div>
-    <main role="main" class="page-host container" data-bind="router: { }"></main>
-    
+    <div class="page-host" data-bind="router: { transition:'entrance' }" margin-top="-60px" style="background-image: url('images/background.jpg'); opacity: 0.85;"></div>
+</div>
+<style>
+    .dropdown:hover>.dropdown-menu {
+        display: block;
+    }
+</style>
