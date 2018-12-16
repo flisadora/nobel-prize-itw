@@ -3,12 +3,12 @@
         console.log('ViewModel initiated...')
         //---Variáveis locais
         var self = this;
-        var baseUri = 'http://192.168.160.40/nobel/api/PremioNobels';
-        self.className = 'PremioNobels';
-        self.description = 'This page aims to demonstrate the use of the Nobel web API for prizes and the interconnection with other entities.<br>Called method(s): <ul><li>' + baseUri + '</li></ul>';
+        var baseUri = 'http://192.168.160.40/nobel/api/LaureadoIndividuos';
+        self.className = 'Laureates by Countries';
+        self.marker = ko.observable();
+        self.description = 'I HATE THIS! <br>Called method(s): <ul><li>' + baseUri + '</li></ul>';
         self.error = ko.observable();
-        self.prizes = ko.observableArray([]);
-        self.categories = ko.observableArray([]);
+        self.laureates = ko.observableArray([]);
         //--- Internal functions
         function ajaxHelper(uri, method, data) {
             self.error(''); // Clear error message
@@ -24,25 +24,28 @@
                 }
             })
         }
-        //var cat = [];
-        //--- Externel functions (accessible outside)
-        getPrizes = function () {
-            console.log('CALL: PremioNobels...')
+
+        // Initialize and add the map
+        function initMap() {
+          // The location of Uluru
+          var uluru = {lat: -25.344, lng: 131.036};
+          // The map, centered at Uluru
+          var map = new google.maps.Map(
+              document.getElementById('map_canvas'), {zoom: 0, center: uluru});
+          // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+
+        //--- External functions (accessible outside)
+        getLaureates = function () {
+            console.log('CALL: LaureadoIndividuos...')
             ajaxHelper(baseUri, 'GET').done(function (data) {
-                self.prizes(data);
-                //for(var i = 0; i<data.length;i++){
-                //    for (var j = 0; j < cat.length; j++){
-                //        if (! data[i].Categoria.Nome in cat) {
-                //            cat.push(data[i].Categoria.Nome);
-                //        };
-                //    };
-                //};
-                //console.log(cat);
+                self.laureates(data);
             });
         };
-       
+
         //---- initial call
-        getPrizes();
+        getLaureates();
     };
     return vm;
 });

@@ -4,8 +4,8 @@
         //---Variáveis locais
         var self = this;
         var baseUri = 'http://192.168.160.40/nobel/api/LaureadoIndividuos';
-        self.className = 'LaureadoIndividuos';
-        self.description = 'This page aims to demonstrate the use of the Nobel web API for laureates and the interconnection with other entities.<br>Called method(s): <ul><li>' + baseUri + '</li></ul>';
+        self.className = 'Laureates';
+        self.description = 'I HATE THIS PAGE! <br>Called method(s): <ul><li>' + baseUri + '</li></ul>';
         self.error = ko.observable();
         self.laureates = ko.observableArray([]);
         //--- Internal functions
