@@ -26,9 +26,10 @@ define(['plugins/router', 'knockout'], function (router, ko) {
             })
         }
         getLaureate = function () {
-            console.log('CALL: getLaureate...')
+            console.log('CALL: getLaureate...',baseUri)
             ajaxHelper(baseUri, 'GET').done(function (data) {
                 self.laureateDetails(data);
+                console.log(self.laureateDetails().length);
                 if (self.laureateDetails().length == 0)
                     alert('No Laureate found...');
             });

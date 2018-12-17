@@ -11,7 +11,6 @@
                     <dd data-bind="text: parseDate(DataNascimento)"></dd>
                     <dt>Cidade de Nascimento:</dt>
                     <dd data-bind="text: CidadeNascimento.Nome + ' (' + CidadeNascimento.Pais.Nome + ')'"></dd>
-                    <iframe data-bind="html:Nome, attr:{ src: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDM0ZNlzZS6wulKFOv1s6PARvuXmGI-paM&q='+CidadeNascimento.Nome + ' (' + CidadeNascimento.Pais.Nome + ')', title: Nome}"></iframe>
                     <!-- ko if:DataMorte != null -->
                     <dt>Data Morte</dt>
                     <dd data-bind="text: parseDate(DataMorte)"></dd>

@@ -1,0 +1,29 @@
+﻿/* INDEX */
+body {
+    font-family: 'Anaheim', sans-serif;
+}
+
+
+/* COUNTRIES */
+.mapouter {
+    text-align: right;
+    height: 600px;
+    width: 1080px;
+}
+
+.map_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 600px;
+    width: 1080px;
+}
+
+
+
+/* LAUREATES */
+laureates-collage.img {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    padding-bottom: 100px;
+}

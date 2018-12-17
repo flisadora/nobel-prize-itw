@@ -208,6 +208,7 @@
     </None>
     <Content Include="App\views\countries.html" />
     <Content Include="App\viewmodels\countries.js" />
+    <Content Include="views.css" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\main.js" />
