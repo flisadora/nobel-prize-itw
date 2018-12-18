@@ -12,7 +12,7 @@
                 { route: 'laureates', moduleId: 'viewmodels/laureates', nav: true },
                 { route: 'prizes', moduleId: 'viewmodels/prizes', nav: true },
                 { route: 'countries', moduleId: 'viewmodels/countries', nav: true },
-                { route: 'categories', moduleId: 'viewmodels/categories', nav: true },
+                //{ route: 'categories', moduleId: 'viewmodels/categories', nav: true },
                 { route: 'laureateDetails/:id', moduleId: 'viewmodels/laureateDetails', nav: false },
             ]).buildNavigationModel();
             
