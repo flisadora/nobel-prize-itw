@@ -1,13 +1,82 @@
 ﻿<section>
-    <div class="page-header">
-        <h2 data-bind="text:className"></h2>
+    <div class="page-header" style="text-align: center; padding-bottom: 50px;">
+        <h2 data-bind="text:className" style="align-content: center;"></h2>
     </div>
 
+    <section>
+        <div class="container categories">
+            <div class="row">
+                <div class="col-sm cat-button"><img class="cat-image" src="images/physics.png" alt="Physics" data-bind="click: catSelection.bind($data, 'Physics')" /></div>
+                <div class="col-sm cat-button"><img class="cat-image" src="images/chemistry.png" alt="Chemistry" data-bind="click: catSelection.bind($data, 'Chemistry')" /></div>
+                <div class="col-sm cat-button"><img class="cat-image" src="images/medicine.png" alt="Medicine" data-bind="click: catSelection.bind($data, 'Medicine')" /></div>
+                <div class="col-sm cat-button"><img class="cat-image" src="images/literature.png" alt="Literature" data-bind="click: catSelection.bind($data, 'Literature')" /></div>
+                <div class="col-sm cat-button"><img class="cat-image" src="images/peace.png" alt="Peace" data-bind="click: catSelection.bind($data, 'Peace')" /></div>
+                <div class="col-sm cat-button"><img class="cat-image" src="images/economy.png" alt="Economic Sciences" data-bind="click: catSelection.bind($data, 'Economics')" /></div>
+            </div>
+            <div class="row">
+                <div class="col-sm"><h5 class="cat-titles">Physics</h5></div>
+                <div class="col-sm"><h5 class="cat-titles">Chemistry</h5></div>
+                <div class="col-sm"><h5 class="cat-titles">Medicine</h5></div>
+                <div class="col-sm"><h5 class="cat-titles">Literature</h5></div>
+                <div class="col-sm"><h5 class="cat-titles">Peace</h5></div>
+                <div class="col-sm"><h5 class="cat-titles">Economic Sciences</h5></div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .categories {
+            text-align: center;
+        }
+
+        .cat-image {
+            padding: 10px;
+        }
+
+        .cat-titles {
+            font-size: 12 0%;
+            font-weight: bold;
+        }
+
+        .cat-image:hover {
+            color: #ffffff;
+            background-color: #f2f2f2;
+            border: 1px solid #ffffff;
+            border-radius: 25px;
+        }
+    </style>
 
     <div data-bind="foreach:prizes">
 
-        <div><i class="fa fa-map-marker"></i> <a data-bind="html:Titulo"></a></div>
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <a data-toggle="modal" data-target="#modalDetails" href="#modalDetails" data-bind="html:Titulo, attr:{ 'data-bind': 'click: setDetails.bind($data, PremioNobelId)'}"></a>
+        </div>
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div data-bind="with:prizeDetails">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="clearfix"></div>
     <!-- ko if:error -->

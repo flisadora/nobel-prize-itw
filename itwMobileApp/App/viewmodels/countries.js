@@ -25,6 +25,10 @@
             })
         }
 
+        //-----> MY BAD CODE BEGINS HERE
+        //-----> I BET SuperMiguel WOULD DO IN 1/3rd OF THE LINES AND 1/10th OF THE TIME
+
+
         // Initialize and add the map
         function initMap() {
           // The location of Uluru
@@ -43,6 +47,26 @@
                 self.laureates(data);
             });
         };
+
+
+        //Google Maps function
+        function initMap() {
+          var center = {lat: 41.8781, lng: -87.6298};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: center
+          });
+          var marker = new google.maps.Marker({
+            position: center,
+            map: map
+          });
+        }
+
+
+
+
+
+
 
         //---- initial call
         getLaureates();
