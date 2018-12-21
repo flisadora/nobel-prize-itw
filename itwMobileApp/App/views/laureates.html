@@ -29,6 +29,8 @@
         </section>
     </div>
 
+    <br><div id="infoText" class="">Select the decade you want to see the Laureates's list'.</div>
+
     <style>
         .row {
             padding: 10px;
@@ -58,6 +60,11 @@
             border: 2px solid #ffffff;
         }
 
+        #infoText {
+            text-align: center;
+            font-weight: bold;
+        }
+
         .showLaureates {
             font-size: 150%;
             font-weight: bold;
@@ -65,45 +72,49 @@
             padding: 15px;
         }
 
-        .cards-section{
+        .cards-section {
             font-size: 75%;
         }
 
-        .laureatesList{
+        .laureatesList {
             font-size: 90%;
             padding: 3px;
         }
 
-        .fa-cards{
+        .fa-cards {
             padding: 10px;
         }
     </style>
 
-    <br/>
-    <div class="showLaureates">Laureates from <span data-bind="html: listTitle"></span></div>
+    <br />
 
-    <section class="cards-section" style="padding: 15px;">
-        <div class="card-group">
-            <div class="card" style="border-bottom: none; border-top:none; border-left:none;">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="fas fa-trophy fa-cards"></i>Awarded</h5>
-                    <p class="card-text">In this decade there were <span data-bind="text: qtyPrizes" ></span>Laureates awarded.</p>
+    <section id="listLaureates" class="invisible">
+        <div class="showLaureates">Laureates from <span data-bind="html: listTitle"></span></div>
+
+        <section class="cards-section" style="padding: 15px;">
+            <div class="card-group">
+                <div class="card" style="border-bottom: none; border-top:none; border-left:none;">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-trophy fa-cards"></i>Awarded</h5>
+                        <p class="card-text">In this decade there were <span data-bind="text: qtyPrizes"></span> Laureates awarded.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card" style="border-bottom:none; border-top:none;">
-                <div class="card-body">
+                <div class="card" style="border-bottom:none; border-top:none;">
+                    <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-globe-americas fa-cards"></i>Nacionalities</h5>
-                        <p class="card-text">In this decade there were <span data-bind="text: qtyNationalities" ></span>different nacionalities awarded.</p>
+                        <p class="card-text">In this decade there were <span data-bind="text: qtyNationalities"></span> different nationalities awarded.</p>
+                    </div>
+                </div>
+                <div class="card" style="border:none;">
+                    <div class="card-body">
+                        <h5 class="card-title"><span class="fa-cards"><i class="fas fa-male"></i><i class="fas fa-female"></i></span>Men/Women</h5>
+                        <p class="card-text">In this decade there were <span data-bind="text: qtyMen"></span> men and <span data-bind="text: qtyWomen"></span> women awarded.</p>
+                    </div>
                 </div>
             </div>
-            <div class="card" style="border:none;">
-                <div class="card-body">
-                    <h5 class="card-title"><span class="fa-cards"><i class="fas fa-male"></i><i class="fas fa-female"></i></span>Men/Women</h5>
-                    <p class="card-text">In this decade there were <span data-bind="text: qtyMen"></span>men and <span data-bind="text: qtyWomen" ></span> women awarded.</p>
-                </div>
-            </div>
-        </div>
+        </section>
     </section>
+
 
     <!-- ko foreach: laureates -->
     <div class="laureatesList"><i class="fa fa-map-marker"></i> <a data-bind="html:Nome, attr:{ href: '#laureateDetails/'+LaureadoId, title: Nome}"></a></div>

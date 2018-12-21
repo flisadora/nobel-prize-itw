@@ -5,38 +5,57 @@
         var self = this;
         var baseUri = 'http://192.168.160.40/nobel/api/PremioNobels';
         self.className = 'Nobel Prizes';
-        self.description = 'This page aims to demonstrate the use of the Nobel web API for prizes and the interconnection with other entities.<br>Called method(s): <ul><li>' + baseUri + '</li></ul>';
+        self.description = '';
         self.error = ko.observable();
         self.prizes = ko.observableArray([]);
-        self.prizeDetails = ko.observableArray([]);
+        self.prizeDetails = ko.observable();
+
+        var prizesCache = {};
         var originalPrizes = [];
         var allPrizesDetails = [];
 
 
         self.catSelection = function(category){
-            var dataDetails = [];
-            allPrizesDetails = [];
-            ajaxHelper(baseUri+'?Category='+category+'&SortBy=Ano', 'GET').done(function (data) {
-                //console.log(data);
-                self.prizes(data);
-                for(var n = 0; n < data.length; n++){
-                    ajaxHelper(baseUri+'/'+data[n].PremioNobelId, 'GET').done(function (data) {
-                        dataDetails.push(data);
+            $("#infoText").addClass("invisible");
+            
+            if(prizesCache[category] === undefined){
+                ajaxHelper(baseUri+'?Category='+category+'&SortBy=Ano', 'GET').done(function (data) {
+                    var proms = [];
+                    for(var n = 0; n < data.length; n++){
+                        proms.push(ajaxHelper(baseUri+'/'+data[n].PremioNobelId, 'GET'));
+                    }
+                    Promise.all(proms).then(function(all_prizes){
+                        prizesCache[category] = all_prizes;
+                        console.log(category);
+                        console.log(prizesCache[category]);
+                        self.prizes(prizesCache[category]);
                     });
-                }
-                allPrizesDetails = dataDetails;
-            });
-
-        };
-
-        self.setDetails = function(prizeId){
-            var aux = allPrizesDetails;
-            for(var i = 0; i < aux.length; i++){
-                if(prizeId == aux[i].PremioNobelId){
-                    self.prizeDetails(aux[i]);
-                }
+                });
+            }
+            else{
+                self.prizes(prizesCache[category]);
             }
         };
+       
+        self.setDetails = function(prize){
+            console.log(prize);
+            //var aux = allPrizesDetails;
+            //var auxPrizeDetails = [];
+            //for(var i = 0; i < aux.length; i++){
+            //    if(prizeId == aux[i].PremioNobelId){
+            //        self.prizeDetails(aux[i]);
+            //        console.log(aux[i]);
+            //    }
+            //}
+            self.prizeDetails(prize);
+            //self.prizeDetails(auxPrizeDetails);
+            //console.log(self.prizeDetails);
+        };
+
+        //self.closeModal = function() {
+        //    $('.modal').modal('hide');
+        //    console.log("close modal");
+        //};
 
         //--- Internal functions
         function ajaxHelper(uri, method, data) {

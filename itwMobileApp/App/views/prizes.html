@@ -24,6 +24,7 @@
         </div>
     </section>
 
+    <div id="infoText" class="">Select the category you want to list prizes.</div>
     <style>
         .categories {
             text-align: center;
@@ -34,7 +35,7 @@
         }
 
         .cat-titles {
-            font-size: 12 0%;
+            font-size: 120%;
             font-weight: bold;
         }
 
@@ -44,13 +45,17 @@
             border: 1px solid #ffffff;
             border-radius: 25px;
         }
+
+        #infoText {
+            text-align: center;
+            font-weight: bold;
+        }
     </style>
 
-    <div data-bind="foreach:prizes">
-
+    <div data-bind="foreach: prizes" style="text-align:center;">
         <div>
             <i class="fa fa-map-marker"></i>
-            <a data-toggle="modal" data-target="#modalDetails" href="#modalDetails" data-bind="html:Titulo, attr:{ 'data-bind': 'click: setDetails.bind($data, PremioNobelId)'}"></a>
+            <a data-toggle="modal" data-target="#modalDetails" href="#modalDetails" data-bind="text: Titulo, click: $root.setDetails"></a>
         </div>
     </div>
 
@@ -58,19 +63,33 @@
     <!-- Modal -->
     <div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div data-bind="with:prizeDetails">
+            <div data-bind="with: prizeDetails">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel" data-bind="text: Titulo"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-
+                        <div class="row">
+                            <dl class="dl-horizontal">
+                                <dt>Prize motivation</dt>
+                                <dd data-bind="html : Motivacao"></dd>
+                            </dl>
+                        </div>
+                        <div data-bind="foreach: Individuo">
+                            <div class="row">
+                                <dl class="dl-horizontal">
+                                    <dt>Name</dt>
+                                    <dd><a class="close-modal" data-bind="html: Nome, attr:{ href: '#laureateDetails/'+LaureadoId}"></a></dd>
+                                    <dt>Born</dt>
+                                    <dd data-bind="html : DataNascimento"></dd>
+                                    <dt>Died</dt>
+                                    <dd data-bind="html : DataMorte"></dd>
+                                </dl>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

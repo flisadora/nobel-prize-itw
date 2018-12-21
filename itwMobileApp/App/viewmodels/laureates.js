@@ -8,7 +8,7 @@
         var laureateID;
         var arrayLaureates = [];
         self.className = 'Laureates';
-        self.description = 'END OF LIST';
+        self.description = '';
         self.error = ko.observable();
         self.laureates = ko.observableArray([]);
         self.decadesXX = ko.observableArray([{label: '00s', from:1900, until:1910, title:'1901 to 1909'}, {label: '10s', from:1910, until:1920, title:'1910 to 1919'}, {label: '20s', from:1920, until:1930, title:'1920 to 1929'}, {label: '30s', from:1930, until:1940, title:'1930 to 1939'}, {label: '40s', from:1940, until:1950, title:'1940 to 1949'}, {label: '50s', from:1950, until:1960, title:'1950 to 1959'}, {label: '60s', from:1960, until:1970, title:'1960 to 1969'}, {label: '70s', from:1970, until:1980, title:'1970 to 1979'}, {label: '80s', from:1980, until:1990, title:'1980 to 1989'}, {label: '90s', from:1990, until:2000, title:'1990 to 1999'}]);
@@ -23,10 +23,12 @@
 
 
         self.decadeSelection2 = function(from, until, title){
+            $("#listLaureates").removeClass("invisible");
+            $("#infoText").addClass("invisible");
             var sizeOriginal = originalLaureate.length;
             self.laureates([]);
-            self.listTitle = title;
-            self.qtyPrizes = 0;
+            self.listTitle(title);
+            self.qtyPrizes(0);
             var men = 0;
             var women = 0;
             var dic = {};
@@ -46,10 +48,10 @@
                     }
                     if(i == sizeOriginal){
                         self.laureates(aux);
-                        self.qtyMen = men;
-                        self.qtyWomen = women;
-                        self.qtyPrizes = aux.length;
-                        self.qtyNationalities = Object.keys(dic).length;
+                        self.qtyMen(men);
+                        self.qtyWomen(women);
+                        self.qtyPrizes(aux.length);
+                        self.qtyNationalities(Object.keys(dic).length);
                     }
                 });
             }

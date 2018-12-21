@@ -206,9 +206,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="App\views\countries.html" />
-    <Content Include="App\viewmodels\countries.js" />
     <Content Include="views.css" />
+    <Content Include="App\views\search.html" />
+    <Content Include="App\viewmodels\search.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\main.js" />
@@ -251,6 +251,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
